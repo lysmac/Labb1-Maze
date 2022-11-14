@@ -29,3 +29,11 @@ const mymaze = [
   { spot: 24, north: "true", east: "true" },
   { spot: 25, north: "true", west: "true" },
 ];
+
+function printOutArray() {
+  const inputfield = parseInt(document.getElementById("userinput").value, 10);
+
+  const result = mymaze.find(({ spot }) => spot === inputfield);
+
+  document.getElementById("demo").innerHTML = result.west;
+}
