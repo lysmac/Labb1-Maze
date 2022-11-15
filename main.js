@@ -31,15 +31,44 @@ const mymaze = [
   { spot: 25, north: true, west: true },
 ];
 
-function playerLocation() {
-  const inputfield = parseInt(document.getElementById("userinput").value, 10);
+const mymazeweird = [
+  { spot: 51, east: true, south: true },
+  { spot: 52, east: true, south: true, west: true },
+  { spot: 53, north: true, west: true },
+  { spot: 54, east: true, south: true },
+  { spot: 55, west: true },
 
-  // returnerar postionen så funktionen kan användas i andra funktioner
-  return mymaze.find(({ spot }) => spot === inputfield);
-}
+  { spot: 41, north: true, south: true },
+  { spot: 42, north: true, east: true },
+  { spot: 43, east: true, west: true },
+  { spot: 44, north: true, east: true, west: true },
+  { spot: 45, south: true, west: true },
+
+  { spot: 31, north: true, east: true },
+  { spot: 32, west: true },
+  { spot: 33, east: true, south: true },
+  { spot: 34, east: true, west: true },
+  { spot: 35, north: true, south: true, west: true },
+
+  { spot: 21, east: true, south: true },
+  { spot: 22, east: true, west: true },
+  { spot: 23, north: true, west: true },
+  { spot: 24, south: true },
+  { spot: 25, north: true, south: true },
+
+  { spot: 11, north: true, east: true },
+  { spot: 12, east: true, west: true },
+  { spot: 13, west: true },
+  { spot: 14, north: true, east: true },
+  { spot: 15, north: true, west: true },
+];
+
+let playerPositionY = 1;
+let playerPositionX = 3;
+let currentPlayerLocation = 13;
 
 function printOutDirections() {
-  const location = playerLocation();
+  let location = playerLocation();
   const demo = document.getElementById("demo");
 
   // Rensar så det skrivs över för varje ny location
@@ -61,4 +90,39 @@ function printOutDirections() {
   if (location.west === true) {
     addInstruction("Du kan gå väster ut");
   }
+  addInstruction(currentPlayerLocation);
+  // console.log(currentPlayerLocation);
+}
+
+// returnerar postionen spelaren är på så funktionen kan användas i andra funktioner
+function playerLocation() {
+  // const inputfield = parseInt(document.getElementById("userinput").value, 10);
+  // return mymaze.find(({ spot }) => spot === inputfield);
+
+  // Startar på 23, hårdkodat, borttaget
+  return mymazeweird.find(({ spot }) => spot === currentPlayerLocation);
+}
+
+function playerMovementInput() {
+  const location = playerLocation();
+  const inputfield = document.getElementById("userinput").value;
+
+  if (inputfield === "north" && location.north === true) {
+    currentPlayerLocation = currentPlayerLocation + 10;
+    alert("Du gick norr");
+  }
+  if (inputfield === "east" && location.east === true) {
+    currentPlayerLocation = currentPlayerLocation + 1;
+    alert("Du gick öster");
+  }
+  if (inputfield === "south" && location.south === true) {
+    currentPlayerLocation = currentPlayerLocation - 10;
+    alert("Du gick söder");
+  }
+  if (inputfield === "west" && location.west === true) {
+    currentPlayerLocation = currentPlayerLocation - 1;
+    alert("Du gick väster");
+  }
+  printOutDirections();
+  return currentPlayerLocation;
 }
