@@ -32,6 +32,8 @@ const mymaze = [
 ];
 
 const mymazeweird = [
+  { spot: 63 },
+
   { spot: 51, east: true, south: true },
   { spot: 52, east: true, south: true, west: true },
   { spot: 53, north: true, west: true },
@@ -63,8 +65,6 @@ const mymazeweird = [
   { spot: 15, north: true, west: true },
 ];
 
-let playerPositionY = 1;
-let playerPositionX = 3;
 let currentPlayerLocation = 13;
 
 function printOutDirections() {
@@ -90,7 +90,7 @@ function printOutDirections() {
   if (location.west === true) {
     addInstruction("Du kan gå väster ut");
   }
-  addInstruction(currentPlayerLocation);
+  addInstruction(`Din plats i labyrinten är: ${currentPlayerLocation}`);
   // console.log(currentPlayerLocation);
 }
 
@@ -106,22 +106,27 @@ function playerLocation() {
 function playerMovementInput() {
   const location = playerLocation();
   const inputfield = document.getElementById("userinput").value;
+  const playermoves = document.getElementById("playermoves");
+
+  const addPlayerChoice = (choice) => {
+    playermoves.innerHTML += `<div>${choice}</div>`;
+  };
 
   if (inputfield === "north" && location.north === true) {
     currentPlayerLocation = currentPlayerLocation + 10;
-    alert("Du gick norr");
+    addPlayerChoice("> You went north");
   }
   if (inputfield === "east" && location.east === true) {
     currentPlayerLocation = currentPlayerLocation + 1;
-    alert("Du gick öster");
+    addPlayerChoice("> You went east");
   }
   if (inputfield === "south" && location.south === true) {
     currentPlayerLocation = currentPlayerLocation - 10;
-    alert("Du gick söder");
+    addPlayerChoice("> You went south");
   }
   if (inputfield === "west" && location.west === true) {
     currentPlayerLocation = currentPlayerLocation - 1;
-    alert("Du gick väster");
+    addPlayerChoice("> You went west");
   }
   printOutDirections();
   return currentPlayerLocation;
