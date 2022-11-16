@@ -19,6 +19,18 @@
             The goal of this game is to make it throught the maze. Along the way
             you may encounter items and enemies, so be prepared for the
             unexpected.
+            <button type="button" onclick="printOutDirections()">
+              Starta spelet
+            </button>
+          </p>
+          <p><h3>Instructions:</h3>
+            <dl>
+              <dt>Movement commands</dt>
+              <dd>North</dd>
+              <dd>East</dd>
+              <dd>South</dd>
+              <dd>West</dd>
+            </dl>
           </p>
         </div>
         <div class="compass-wrapper">
@@ -29,17 +41,15 @@
           <div class="west">W</div>
         </div>
         <div class="gamestuff">
-          <button type="button" onclick="printOutDirections()">
-            Starta spelet
-          </button>
-          <br />
-          <br />
-          <input type="text" id="userinput" />
-
-          <button type="button" onclick="playerMovementInput()">
-            Player move
-          </button>
           <div id="demo">Directions</div>
+
+          <div class="textinput">
+            <input type="text" id="userinput" />
+
+            <button type="button" onclick="playerMovementInput()">
+              Player move
+            </button>
+          </div>
           <div id="playermoves"></div>
         </div>
       </main>

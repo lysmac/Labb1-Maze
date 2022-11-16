@@ -105,29 +105,32 @@ function playerLocation() {
 
 function playerMovementInput() {
   const location = playerLocation();
-  const inputfield = document.getElementById("userinput").value;
+  const inputfield = document.getElementById("userinput");
+  const inputfieldclean = String(inputfield.value).toLowerCase();
   const playermoves = document.getElementById("playermoves");
 
-  const addPlayerChoice = (choice) => {
+  console.log(inputfieldclean);
+  const printPlayerChoice = (choice) => {
     playermoves.innerHTML += `<div>${choice}</div>`;
   };
 
-  if (inputfield === "north" && location.north === true) {
+  if (inputfieldclean === "north" && location.north === true) {
     currentPlayerLocation = currentPlayerLocation + 10;
-    addPlayerChoice("> You went north");
+    printPlayerChoice("> You went north");
   }
-  if (inputfield === "east" && location.east === true) {
+  if (inputfieldclean === "east" && location.east === true) {
     currentPlayerLocation = currentPlayerLocation + 1;
-    addPlayerChoice("> You went east");
+    printPlayerChoice("> You went east");
   }
-  if (inputfield === "south" && location.south === true) {
+  if (inputfieldclean === "south" && location.south === true) {
     currentPlayerLocation = currentPlayerLocation - 10;
-    addPlayerChoice("> You went south");
+    printPlayerChoice("> You went south");
   }
-  if (inputfield === "west" && location.west === true) {
+  if (inputfieldclean === "west" && location.west === true) {
     currentPlayerLocation = currentPlayerLocation - 1;
-    addPlayerChoice("> You went west");
+    printPlayerChoice("> You went west");
   }
+
   printOutDirections();
   return currentPlayerLocation;
 }
