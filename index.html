@@ -4,17 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>The Maze</title>
     <link rel="stylesheet" href="style.css" />
     <script src="/main.js"></script>
+    <!-- favicon -->
   </head>
   <body>
-    <button type="button" onclick="printOutDirections()">Starta spelet</button>
-    <br />
-    <br />
-    <input type="text" id="userinput" />
+    <div class="container">
+      <header>The Maze Game</header>
+      <main>
+        <div class="intro">
+          <h2>Welcome to the Maze game</h2>
+          <p>
+            The goal of this game is to make it throught the maze. Along the way
+            you may encounter items and enemies, so be prepared for the
+            unexpected.
+          </p>
+        </div>
+        <div class="compasswrapper">
+          <div class="north">N</div>
+          <div class="east">E</div>
 
-    <button type="button" onclick="playerMovementInput()">Player move</button>
-    <div id="demo"></div>
+          <div class="south">S</div>
+          <div class="west">W</div>
+
+          <div class="compass"></div>
+        </div>
+        <div class="gamestuff">
+          <button type="button" onclick="printOutDirections()">
+            Starta spelet
+          </button>
+          <br />
+          <br />
+          <input type="text" id="userinput" />
+
+          <button type="button" onclick="playerMovementInput()">
+            Player move
+          </button>
+          <div id="demo"></div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
