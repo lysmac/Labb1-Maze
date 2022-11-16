@@ -109,7 +109,6 @@ function playerMovementInput() {
   const inputfieldclean = String(inputfield.value).toLowerCase();
   const playermoves = document.getElementById("playermoves");
 
-  console.log(inputfieldclean);
   const printPlayerChoice = (choice) => {
     playermoves.innerHTML += `<div>${choice}</div>`;
   };
@@ -131,6 +130,13 @@ function playerMovementInput() {
     printPlayerChoice("> You went west");
   }
 
+  winCondition();
   printOutDirections();
   return currentPlayerLocation;
+}
+
+function winCondition() {
+  if (currentPlayerLocation === 63) {
+    alert("you are the winner");
+  }
 }
