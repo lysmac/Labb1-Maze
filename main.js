@@ -130,6 +130,8 @@ function playerMovementInput() {
     printPlayerChoice("> You went west");
   }
 
+  addWolf();
+  wolfDeath();
   winCondition();
   printOutDirections();
   return currentPlayerLocation;
@@ -139,4 +141,22 @@ function winCondition() {
   if (currentPlayerLocation === 63) {
     alert("you are the winner");
   }
+}
+
+function wolfDeath() {
+  const location = playerLocation();
+  if (location.wolf === true) {
+    alert("En varg äter dig");
+  }
+}
+
+function addWolf() {
+  const random = mymazeweird[randomNumber(1, 6)];
+  console.log(random);
+  random.wolf = true;
+  console.log(mymazeweird);
+}
+
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
 }
