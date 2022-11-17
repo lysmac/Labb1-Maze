@@ -28,7 +28,6 @@ header {
 }
 
 main {
-  padding: 1rem;
   display: flex;
   flex-wrap: wrap;
 }
@@ -113,5 +112,36 @@ input {
 }
 
 #death {
-  font-size: 2rem;
+  width: 100%;
+  background-color: black;
+}
+
+.deathstyles {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  opacity: 1;
+  color: red;
+  font-size: 7em;
+  animation: fade-in 10s, text 3s linear;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes text {
+  0% {
+    font-size: 3rem;
+  }
+
+  100% {
+    font-size: 7rem;
+  }
 }
