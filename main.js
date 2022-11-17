@@ -47,12 +47,22 @@ const mymazeweird = [
 /** Placerar spelaren på dess starposition i labyrinten */
 let currentPlayerLocation = 13;
 
-/** Funktionen som körs när man väljer att starta spelet. Genererar en dödlig varg på en plats i labyrinten
- * samt skriver ut vilka vägar man kan gå från startpositionen.
- */
+/** Alla funktioner som körs när man startar spelet.*/
 function startGame() {
+  showGame();
+  hideInstructions();
   addWolf();
   printOutDirections();
+}
+
+function hideInstructions() {
+  div = document.getElementById("intro");
+  div.classList.add("hidden");
+}
+
+function showGame() {
+  div = document.getElementById("gamestuff");
+  div.classList.replace("hidden", "show");
 }
 
 /** Genererar en varg på en utav fem utvalda platser i labyrinten */
