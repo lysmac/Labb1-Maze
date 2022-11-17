@@ -111,3 +111,7 @@ input {
 .show {
   display: block;
 }
+
+#death {
+  font-size: 2rem;
+}

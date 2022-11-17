@@ -38,7 +38,7 @@ const mymazeweird = [
   { spot: 25, north: true, south: true },
 
   { spot: 11, north: true, east: true },
-  { spot: 12, east: true, west: true },
+  { spot: 12, east: true, west: true, wolf: true },
   { spot: 13, west: true },
   { spot: 14, north: true, east: true },
   { spot: 15, north: true, west: true },
@@ -49,7 +49,7 @@ let currentPlayerLocation = 13;
 
 /** Alla funktioner som körs när man startar spelet.*/
 function startGame() {
-  showGame();
+  showAndHideGame();
   hideInstructions();
   addWolf();
   printOutDirections();
@@ -60,9 +60,9 @@ function hideInstructions() {
   div.classList.add("hidden");
 }
 
-function showGame() {
+function showAndHideGame() {
   div = document.getElementById("gamestuff");
-  div.classList.replace("hidden", "show");
+  div.classList.toggle("hidden");
 }
 
 /** Genererar en varg på en utav fem utvalda platser i labyrinten */
@@ -92,16 +92,16 @@ function printOutDirections() {
   };
 
   if (location.north === true) {
-    addInstruction("Du kan gå norr ut");
+    addInstruction("You can go north.");
   }
   if (location.east === true) {
-    addInstruction("Du kan gå öster ut");
+    addInstruction("You can go east");
   }
   if (location.south === true) {
-    addInstruction("Du kan gå söder ut");
+    addInstruction("You can go south");
   }
   if (location.west === true) {
-    addInstruction("Du kan gå väster ut");
+    addInstruction("You can go west");
   }
   // Ska tas bort, använts i testningssyfte
   addInstruction(`Din plats i labyrinten är: ${currentPlayerLocation}`);
@@ -174,6 +174,8 @@ function winCondition() {
 function wolfDeath() {
   const location = playerLocation();
   if (location.wolf === true) {
-    alert("En varg äter dig");
+    div = document.getElementById("death");
+    div.classList.toggle("hidden");
+    showAndHideGame();
   }
 }
