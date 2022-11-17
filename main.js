@@ -1,3 +1,13 @@
+window.addEventListener("DOMContentLoaded", main);
+
+function main() {
+  const movebutton = document.getElementById("movebutton");
+  movebutton.addEventListener("click", playerMovementInput);
+
+  const startbutton = document.getElementById("startbutton");
+  startbutton.addEventListener("click", startGame);
+}
+
 // Hur labyrinten ser ut, vilka val som finns att göra på alla olika platser.
 const mymaze = [
   { spot: 1, east: true, south: true },
@@ -67,6 +77,11 @@ const mymazeweird = [
 
 let currentPlayerLocation = 13;
 
+function startGame() {
+  addWolf();
+  printOutDirections();
+}
+
 function printOutDirections() {
   let location = playerLocation();
   const demo = document.getElementById("demo");
@@ -103,6 +118,12 @@ function playerLocation() {
   return mymazeweird.find(({ spot }) => spot === currentPlayerLocation);
 }
 
+function clearTextfield() {
+  const userwritteninput = document.getElementById("userinput");
+
+  userwritteninput.value = "";
+}
+
 function playerMovementInput() {
   const location = playerLocation();
   const inputfield = document.getElementById("userinput");
@@ -130,6 +151,7 @@ function playerMovementInput() {
     printPlayerChoice("> You went west");
   }
 
+  clearTextfield();
   addWolf();
   wolfDeath();
   winCondition();
@@ -150,11 +172,14 @@ function wolfDeath() {
   }
 }
 
+// Siffrorna i random betyder
+// 1 = plats nummer två i arrayen, dvs spot 51
+// 6 = taket, dvs jag vill ha en siffra mellan 1-5
+// Genererar en varg i en slumpmässigt vald ruta av de fem längst upp
+// i labyrinten
 function addWolf() {
   const random = mymazeweird[randomNumber(1, 6)];
-  console.log(random);
   random.wolf = true;
-  console.log(mymazeweird);
 }
 
 function randomNumber(min, max) {
