@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: rgb(7, 54, 7);
-  background-image: url(/images/ImageGenerator.svg);
+  /* background-image: url(/images/ImageGenerator.svg); */
   background-position: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;

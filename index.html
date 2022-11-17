@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Maze</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="/main.js"></script>
+    <script defer src="/main.js"></script>
     <!-- favicon -->
   </head>
   <body>
@@ -16,12 +16,12 @@
         <div class="intro">
           <h2>Welcome to the Maze game</h2>
           <p>
-            The goal of this game is to make it throught the maze. Along the way
+            The goal of this game is to make it through the maze. Along the way
             you may encounter items and enemies, so be prepared for the
             unexpected.
-            <button type="button" onclick="printOutDirections()">
+            <!-- <button type="button" onclick="printOutDirections()">
             old
-            </button>
+            </button> -->
 
             <button id="startbutton" type="button">
               Starta spelet
@@ -48,14 +48,17 @@
           <div id="demo">Directions</div>
 
           <div class="textinput">
-            <input type="text" id="userinput" />
-
-
+            <!-- <input type="text" id="userinput" /> -->
             <!-- <button id="movebutton" type="button" onclick="playerMovementInput()"> -->
 
-            <button id="movebutton" type="button" onclick="playerMovementInput()">
+            <!-- <button id="movebutton" type="button">
               Player move
-            </button>
+            </button> -->
+            
+            <form id="form">
+              <input name="textinput" id="userinput" />
+                <button id="movebutton" type="submit">MOVE</button>
+            </form>
           </div>
           <div id="playermoves"></div>
         </div>
