@@ -1,46 +1,15 @@
 window.addEventListener("DOMContentLoaded", main);
 
+/** Lyssnar på knappar/form och vilka funktioner som ska köras vid klick/submit  */
 function main() {
   const startbutton = document.getElementById("startbutton");
   startbutton.addEventListener("click", startGame);
 
-  const form = document.getElementById("form"); // ändra här till formets ID
-  form.addEventListener("submit", playerMovementInput); // ändra HÄR till submit
+  const form = document.getElementById("form");
+  form.addEventListener("submit", playerMovementInput);
 }
 
-// Hur labyrinten ser ut, vilka val som finns att göra på alla olika platser.
-// const mymaze = [
-//   { spot: 1, east: true, south: true },
-//   { spot: 2, east: true, south: true, west: true },
-//   { spot: 3, north: true, west: true },
-//   { spot: 4, east: true, south: true },
-//   { spot: 5, west: true },
-
-//   { spot: 6, north: true, south: true },
-//   { spot: 7, north: true, east: true },
-//   { spot: 8, east: true, west: true },
-//   { spot: 9, north: true, east: true, west: true },
-//   { spot: 10, south: true, west: true },
-
-//   { spot: 11, north: true, east: true },
-//   { spot: 12, west: true },
-//   { spot: 13, east: true, south: true },
-//   { spot: 14, east: true, west: true },
-//   { spot: 15, north: true, south: true, west: true },
-
-//   { spot: 16, east: true, south: true },
-//   { spot: 17, east: true, west: true },
-//   { spot: 18, north: true, west: true },
-//   { spot: 19, south: true },
-//   { spot: 20, north: true, south: true },
-
-//   { spot: 21, north: true, east: true },
-//   { spot: 22, east: true, west: true },
-//   { spot: 23, west: true },
-//   { spot: 24, north: true, east: true },
-//   { spot: 25, north: true, west: true },
-// ];
-
+/** Hur labyrinten ser ut, vilka vägval som finns på de olika platserna.*/
 const mymazeweird = [
   { spot: 63 },
 
@@ -75,19 +44,37 @@ const mymazeweird = [
   { spot: 15, north: true, west: true },
 ];
 
-// Startposition för spelaren
+/** Placerar spelaren på dess starposition i labyrinten */
 let currentPlayerLocation = 13;
 
+/** Funktionen som körs när man väljer att starta spelet. Genererar en dödlig varg på en plats i labyrinten
+ * samt skriver ut vilka vägar man kan gå från startpositionen.
+ */
 function startGame() {
   addWolf();
   printOutDirections();
 }
 
+/** Genererar en varg på en utav fem utvalda platser i labyrinten */
+function addWolf() {
+  const random = mymazeweird[randomNumber(1, 6)];
+  // 1 = plats nummer två i arrayen, dvs spot 51
+  // 6 = taket, dvs jag vill ha en siffra mellan 1-5
+  random.wolf = true;
+}
+
+/** Ger ett slumpmässigt tal inom ett intervall*/
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+/** Skriver ut vilket håll spelaren har möjlighet att gå från den positionen spelaren befinner sig i.
+ * Skriver också över sig själv innan den skriver ut något nytt, för att spelaren bara ska ha uppdaterade insturktioner.
+ */
 function printOutDirections() {
   let location = playerLocation();
   const demo = document.getElementById("demo");
 
-  // Rensar så det skrivs över för varje ny location
   demo.innerHTML = "";
 
   const addInstruction = (instruction) => {
@@ -106,30 +93,35 @@ function printOutDirections() {
   if (location.west === true) {
     addInstruction("Du kan gå väster ut");
   }
+  // Ska tas bort, använts i testningssyfte
   addInstruction(`Din plats i labyrinten är: ${currentPlayerLocation}`);
-  // console.log(currentPlayerLocation);
 }
 
-// returnerar postionen spelaren är på så funktionen kan användas i andra funktioner
+/** Returnerar postionen spelaren befinner sig på för tillfället */
 function playerLocation() {
-  // const inputfield = parseInt(document.getElementById("userinput").value, 10);
-  // return mymaze.find(({ spot }) => spot === inputfield);
-
-  // Startar på 23, hårdkodat, borttaget
   return mymazeweird.find(({ spot }) => spot === currentPlayerLocation);
 }
 
+/** Rensar inputfältet efter man har skickat ett kommando */
 function clearTextfield() {
   const userwritteninput = document.getElementById("userinput");
 
   userwritteninput.value = "";
 }
 
+/**
+ * Flyttar spelaren till en ny plats beroende på input från spelaren
+ * @param {Lyssnar efter event} event
+ */
 function playerMovementInput(event) {
+  // Gör så att default-utförandet vid ett form, dvs. reload på sidan, inte körs.
   event.preventDefault();
 
   const location = playerLocation();
   const inputfield = document.getElementById("userinput");
+
+  // Gör så inputen från spelaren blir endast lowercase. Dvs. inputs är inte länge
+  // känsliga för gemener och versaler.
   const inputfieldclean = String(inputfield.value).toLowerCase();
   const playermoves = document.getElementById("playermoves");
 
@@ -161,29 +153,17 @@ function playerMovementInput(event) {
   printOutDirections();
 }
 
+/** Kollar om spelaren är på den enda utgången som finns i labyrinten */
 function winCondition() {
   if (currentPlayerLocation === 63) {
     alert("you are the winner");
   }
 }
 
+/** Hamnar du på samma plats som vargen, så dör du */
 function wolfDeath() {
   const location = playerLocation();
   if (location.wolf === true) {
     alert("En varg äter dig");
   }
-}
-
-// Siffrorna i random betyder
-// 1 = plats nummer två i arrayen, dvs spot 51
-// 6 = taket, dvs jag vill ha en siffra mellan 1-5
-// Genererar en varg i en slumpmässigt vald ruta av de fem längst upp
-// i labyrinten
-function addWolf() {
-  const random = mymazeweird[randomNumber(1, 6)];
-  random.wolf = true;
-}
-
-function randomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min) + min);
 }
