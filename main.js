@@ -38,7 +38,7 @@ const mymazeweird = [
   { spot: 25, north: true, south: true },
 
   { spot: 11, north: true, east: true },
-  { spot: 12, east: true, west: true, wolf: true },
+  { spot: 12, east: true, west: true },
   { spot: 13, west: true },
   { spot: 14, north: true, east: true },
   { spot: 15, north: true, west: true },
@@ -163,10 +163,12 @@ function playerMovementInput(event) {
   printOutDirections();
 }
 
-/** Kollar om spelaren är på den enda utgången som finns i labyrinten */
+/** Visar vinstinformation när spelaren vunnit */
 function winCondition() {
-  if (currentPlayerLocation === 63) {
-    alert("you are the winner");
+  if (currentPlayerLocation === 13) {
+    div = document.getElementById("winner");
+    div.classList.toggle("hidden");
+    showAndHideGame();
   }
 }
 
