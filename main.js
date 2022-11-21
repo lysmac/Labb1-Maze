@@ -53,6 +53,7 @@ function startGame() {
   hideInstructions();
   addWolf();
   printOutDirections();
+  console.log(mymazeweird);
 }
 
 function hideInstructions() {
@@ -157,7 +158,6 @@ function playerMovementInput(event) {
   }
 
   clearTextfield();
-  addWolf();
   wolfDeath();
   winCondition();
   printOutDirections();
@@ -165,7 +165,7 @@ function playerMovementInput(event) {
 
 /** Visar vinstinformation när spelaren vunnit */
 function winCondition() {
-  if (currentPlayerLocation === 13) {
+  if (currentPlayerLocation === 63) {
     div = document.getElementById("winner");
     div.classList.toggle("hidden");
     showAndHideGame();
