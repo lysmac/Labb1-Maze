@@ -53,14 +53,15 @@ function startGame() {
   hideInstructions();
   addWolf();
   printOutDirections();
-  console.log(mymazeweird);
 }
 
+/** Gömmer instruktioner efter man startat spelet */
 function hideInstructions() {
   div = document.getElementById("intro");
   div.classList.add("hidden");
 }
 
+/** Tar fram spel-delen när man startar spelet */
 function showAndHideGame() {
   div = document.getElementById("gamestuff");
   div.classList.toggle("hidden");
@@ -104,8 +105,6 @@ function printOutDirections() {
   if (location.west === true) {
     addInstruction("You can go west");
   }
-  // Ska tas bort, använts i testningssyfte
-  addInstruction(`Din plats i labyrinten är: ${currentPlayerLocation}`);
 }
 
 /** Returnerar postionen spelaren befinner sig på för tillfället */
