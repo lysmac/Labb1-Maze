@@ -13,67 +13,67 @@
     <div class="container">
       <header>The Maze Game</header>
       <main>
+        
         <div id="intro">
           <h2>Welcome to the Maze game</h2>
           <p>
-            The goal of this game is to make it through the maze. Along the way
-            you may encounter items and enemies, so be prepared for the
-            unexpected.
-            <!-- <button type="button" onclick="printOutDirections()">
-            old
-            </button> -->
+            The goal of this game is to make it through the maze. 
+            Simple, right? Beware of the hungry wolf though, who likes to lurk around the exit.
 
-            <button id="startbutton" type="button">
-              Starta spelet
-            </button>
+          
           </p>
+
           <p><h3>Instructions:</h3>
-            <dl>
-              <dt>Movement commands</dt>
-              <dd>North</dd>
-              <dd>East</dd>
-              <dd>South</dd>
-              <dd>West</dd>
-            </dl>
+          There is only four commands you need to know to move around the maze.</p>
+              <ul>
+              <li>North</li>
+              <li>East</li>
+              <li>South</li>
+              <li>West</li>
+          </ul>         
+        </p>
+          <p>
+            That's all. If you're up for the task, click the button below.
           </p>
+          <button id="startbutton" type="button">
+            Start playing
+          </button>
         </div>
-        <div class="compass-wrapper">
-          <div class="north">N</div>
-          <div class="east">E</div>
-
-          <div class="south">S</div>
-          <div class="west">W</div>
-        </div>
+        
         <div id="gamestuff" class="hidden">
+
           <div id="demo">Directions</div>
 
           <div class="textinput">
-            <!-- <input type="text" id="userinput" /> -->
-            <!-- <button id="movebutton" type="button" onclick="playerMovementInput()"> -->
 
-            <!-- <button id="movebutton" type="button">
-              Player move
-            </button> -->
             
             <form id="form">
               <input name="textinput" id="userinput" />
                 <button id="movebutton" type="submit">MOVE</button>
             </form>
           </div>
+
+          
           <div id="playermoves"></div>
         </div>
         <div id="death" class="hidden">
           <div class="deathstyles">
-         <p> YOU DIED
-          💀 🐺</p>
+            <p> YOU DIED
+          🐺</p>
           </div>
         </div>
         <div id="winner" class="hidden">
-          
-         <p> YOU WON</p>
+          <div class="chickendinner">
+            <p> 🎉🥳🎉 YOU WON 🎉🥳🎉</p>
+             </div>
+
           
         </div>
+
       </main>
+      
     </div>
+
+
   </body>
 </html>

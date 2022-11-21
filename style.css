@@ -3,7 +3,7 @@ body {
   display: flex;
   justify-content: center;
   background-color: rgb(7, 54, 7);
-  /* background-image: url(/images/ImageGenerator.svg); */
+  background-image: url(/images/ImageGenerator.svg);
   background-position: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -30,58 +30,24 @@ header {
 main {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 #intro {
   width: 70%;
 }
-.compass-wrapper {
-  width: 12rem;
-  height: 12rem;
-  background-image: url(/images/compass-final.png);
-  background-position: center;
-  background-size: 10rem;
-  background-repeat: no-repeat;
-  display: grid;
-  grid-template-columns: 33%;
-  grid-template-rows: 33%;
 
-  background-color: chartreuse;
-  display: none;
-}
-
-.north {
-  grid-row: 1 / span 1;
-  grid-column: 1 / span 2;
-  background-color: rebeccapurple;
-}
-
-.east {
-  background-color: aqua;
-  grid-row: 2 / span 8;
-  grid-column: 11 / span 1;
-}
-
-.south {
-  background-color: rgb(255, 225, 0);
-  grid-row: 11 / span 1;
-  grid-column: 1 / span 12;
-  height: 20px;
-}
-
-.west {
-  background-color: rgb(255, 0, 0);
-  grid-row: 2 / span 9;
-  grid-column: 0 / span 1;
+#gamestuff {
+  width: 70%;
+  padding-top: 1rem;
 }
 
 #demo {
-  background-color: aqua;
 }
 
-#gamestuff {
-  background-color: #cccccc;
-  width: 100%;
+.textinput {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 #playermoves {
@@ -99,7 +65,7 @@ button {
 }
 
 input {
-  width: 20rem;
+  width: 20%;
   height: 1.3rem;
 }
 
@@ -120,7 +86,6 @@ input {
   height: 100vh;
   display: flex;
   justify-content: center;
-
   opacity: 1;
   color: red;
   font-size: 7em;
@@ -144,4 +109,8 @@ input {
   100% {
     font-size: 7rem;
   }
+}
+
+.chickendinner {
+  font-size: 2.4rem;
 }

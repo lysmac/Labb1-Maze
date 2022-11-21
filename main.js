@@ -94,7 +94,7 @@ function printOutDirections() {
   };
 
   if (location.north === true) {
-    addInstruction("You can go north.");
+    addInstruction("You can go north");
   }
   if (location.east === true) {
     addInstruction("You can go east");
